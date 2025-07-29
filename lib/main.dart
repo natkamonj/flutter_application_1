@@ -9,49 +9,52 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key}); // Constructor
 
-
   @override
   Widget build(BuildContext context) {
     // เมธอด build() ส่งคืนโครงสร้างต้นไม้วิดเจ็ตสำหรับวิดเจ็ตนี้
     return MaterialApp(
+      title: 'My Awesome App',
+      debugShowCheckedModeBanner: false, // ซ่อนแบนเนอร์ debug
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true, // ใช้ Material Design เวอร์ชันล่าสุด
       ),
-      title: 'Flutter Demo',
-      home: const MyHomePage(),
+      home: const MyHomePage(), // วิดเจ็ตหน้าจอหลักของคุณ
     );
   }
 }
-// ตัวอย่างวิดเจ็ตที่ส่งคืนโดย property 'home' ของ MaterialApp
+
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // ให้โครงสร้างแอปพื้นฐาน
       appBar: AppBar(
-        title: const Text('Chapter 3 Lab'),
-        backgroundColor: Colors.teal,
+        title: const Text('Home Page'),
+        backgroundColor: Colors.blue, // ปรับแต่งสี AppBar
       ),
       body: Center(
-        // จัดกึ่งกลาง Container
+        // พื้นที่เนื้อหาหลัก
         child: Container(
-        padding: EdgeInsets.all(50.0),
-          // กล่อง
+          padding: EdgeInsets.all(10.0),
           width: 300.0,
-          height: 200.0,
+          height: 150.0,
           decoration: BoxDecoration(
             color: Colors.amber,
-            borderRadius: BorderRadius.all(Radius.circular(20.0)),
+            borderRadius: BorderRadius.horizontal(
+              left: Radius.circular(10.0),
+              right: Radius.elliptical(50.0, 10),
+            ),
           ),
-          child: const Text(
-            'inside container',
-            textAlign: TextAlign.center, // ทางเลือก: จัดกลางข้อความ
-            style: TextStyle( // ทางเลือก: กำหนดสไตล์ข้อความ
-              fontSize: 20.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.black87,
-            ),          
+          child: Center(
+            child: Image.asset(
+              'assets/images/catflu.jpg',
+
+              width: 150,
+              // height: 50,
+            ),    
           ),
         ),
       ),
